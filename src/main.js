@@ -130,3 +130,19 @@ function animate() {
 }
 
 animate();
+
+// Mobile Navigation Toggle
+const mobileToggle = document.querySelector('.mobile-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+}
