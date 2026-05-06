@@ -4,6 +4,7 @@ export const sectionObjects = [];
 
 export function createSections(cssScene) {
     const pathname = window.location.pathname;
+    const isMobile = window.innerWidth < 768;
     let sectionsData = [];
 
     if (pathname.includes('/services.html')) {
@@ -143,9 +144,9 @@ export function createSections(cssScene) {
                 width = '1000px';
                 content = `
                     <h2 class="section-heading">Our Workflow</h2>
-                    <div style="display: flex; justify-content: space-between; position: relative; margin-top: 60px;">
+                    <div class="process-container">
                         <!-- Connector Line -->
-                        <div style="position: absolute; top: 30px; left: 100px; right: 100px; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-purple), var(--accent-cyan), transparent); z-index: -1; box-shadow: 0 0 15px var(--accent-purple);"></div>
+                        <div class="process-connector"></div>
                         
                         <div class="process-node interactive">
                             <div class="node-circle">1</div>
@@ -173,7 +174,7 @@ export function createSections(cssScene) {
             case 'impact':
                 width = '1000px';
                 content = `
-                    <div class="glass-panel" style="display: flex; justify-content: space-around; padding: 60px;">
+                    <div class="glass-panel stat-container">
                         <div class="stat-item interactive">
                             <div class="stat-num">150+</div>
                             <div class="stat-label">Brands Served</div>
@@ -487,7 +488,7 @@ export function createSections(cssScene) {
         }
 
         const div = document.createElement('div');
-        div.style.width = width;
+        div.style.width = isMobile ? '350px' : width;
         div.innerHTML = content;
 
         const obj = new CSS3DObject(div);
